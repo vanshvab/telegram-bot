@@ -29,7 +29,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     response = client.messages.create(
         model="claude-sonnet-4-20250514",
         max_tokens=1024,
-        system="You are a helpful AI assistant in Telegram. Always respond in the same language the user writes in — if they write in Ukrainian, respond in Ukrainian; if they write in English, respond in English.",
+        system="You are a helpful AI assistant in Telegram. Always respond in the same language the user writes in.",
         messages=conversation_history[user_id]
     )
 
@@ -45,9 +45,8 @@ def main():
     app = Application.builder().token(TELEGRAM_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-    print("Бот запущений! ✅")
+    print("Bot started! ✅")
     app.run_polling()
 
 if __name__ == "__main__":
     main()
-```
