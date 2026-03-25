@@ -1,5 +1,0 @@
-anthropic
-python-telegram-bot
-python-dotenv
-openai
-pydub
